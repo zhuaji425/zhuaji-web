@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爪迹 - 校园流浪动物关怀平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: #fdf6f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff9a8b, #ff6a88);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .slogan {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .nav-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            color: #ff6a88;
+            border-color: #ff6a88;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: #ff6a88;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #fce4ec;
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .cat-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fefefe;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cat-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .cat-info {
+            padding: 1rem;
+        }
+
+        .cat-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #d65a7a;
+            margin-bottom: 0.3rem;
+        }
+
+        .cat-tag {
+            display: inline-block;
+            background: #ffe0e9;
+            color: #e95a8a;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff6a88;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 0.8rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #e95a7a;
+        }
+
+        .process {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: #ff6a88;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.8rem;
+            font-weight: bold;
+        }
+
+        .volunteer-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .info-box {
+            background: #fff5f8;
+            border-left: 4px solid #ff6a88;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🐾 爪 迹</div>
+    <div class="slogan">校园流浪动物关怀与公共教育平台 · 让流浪不再无助</div>
+</header>
+
+<nav>
+    <div class="nav-wrap">
+        <a href="#home">首页</a>
+        <a href="#about">项目介绍</a>
+        <a href="#cats">流浪萌宠</a>
+        <a href="#process">救助流程</a>
+        <a href="#adopt">我要领养</a>
+        <a href="#volunteer">加入我们</a>
+    </div>
+</nav>
+
+<div class="container">
+    <!-- 项目介绍 -->
+    <section class="section" id="about">
+        <h2>📢 项目介绍</h2>
+        <div class="info-box">
+            <p>“爪迹”是面向校园流浪动物的公益救助平台，专注于<strong>发现、记录、照护、绝育、领养</strong>全流程服务，用科技与爱心搭建人与流浪动物的桥梁。</p>
+        </div>
+        <p>目前聚焦四川电力职业技术学院及周边区域，建立完整流浪动物档案库，提供线上求助、领养申请、志愿报名、科普宣传等功能，打造可持续的校园公益生态。</p>
+        <p>我们相信：每一个生命都值得被温柔以待。</p>
+    </section>
+
+    <!-- 流浪猫咪图鉴 -->
+    <section class="section" id="cats">
+        <h2>😺 校园流浪萌宠图鉴</h2>
+        <div class="cat-grid">
+            <div class="cat-card">
+                <div class="cat-img" style="background:url('https://picsum.photos/seed/cat1/600/400') center/cover;"></div>
+                <div class="cat-info">
+                    <div class="cat-name">橘座</div>
+                    <span class="cat-tag">已绝育</span>
+                    <span class="cat-tag">公猫</span>
+                    <p>出没：实训楼后花坛</p>
+                    <p>状态：猫藓已治愈，性格温顺亲人</p>
+                    <button class="btn">查看详情</button>
+                </div>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-img" style="background:url('https://picsum.photos/seed/cat2/600/400') center/cover;"></div>
+                <div class="cat-info">
+                    <div class="cat-name">奶糖</div>
+                    <span class="cat-tag">待绝育</span>
+                    <span class="cat-tag">母猫</span>
+                    <p>出没：食堂侧门</p>
+                    <p>状态：胆小安静，已定期驱虫</p>
+                    <button class="btn">申请领养</button>
+                </div>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-img" style="background:url('https://picsum.photos/seed/cat3/600/400') center/cover;"></div>
+                <div class="cat-info">
+                    <div class="cat-name">小黑</div>
+                    <span class="cat-tag">已绝育</span>
+                    <span class="cat-tag">公猫</span>
+                    <p>出没：宿舍区草坪</p>
+                    <p>状态：健康活泼，适合家庭饲养</p>
+                    <button class="btn">我想投喂</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 救助流程 -->
+    <section class="section" id="process">
+        <h2>🔁 科学救助流程</h2>
+        <div class="process">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h4>发现上报</h4>
+                <p>发现流浪动物一键上报位置与状况</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h4>建档记录</h4>
+                <p>拍照记录特征、健康与出没区域</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h4>救助医疗</h4>
+                <p>联系医院进行驱虫、绝育、伤病治疗</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h4>领养安置</h4>
+                <p>审核领养人信息，安排送养与回访</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 我要领养 -->
+    <section class="section" id="adopt">
+        <h2>🏠 我要领养 · 给它一个家</h2>
+        <div class="volunteer-form">
+            <div class="form-group">
+                <label>领养猫咪名称</label>
+                <input type="text" placeholder="请填写想领养的猫咪名字">
+            </div>
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" placeholder="请输入你的姓名">
+            </div>
+            <div class="form-group">
+                <label>联系电话</label>
+                <input type="text" placeholder="请输入有效手机号">
+            </div>
+            <div class="form-group">
+                <label>居住环境与养宠经验</label>
+                <textarea rows="4" placeholder="简单介绍住房情况、是否有养宠经验、是否同意科学喂养与定期回访"></textarea>
+            </div>
+            <button class="btn">提交领养申请</button>
+        </div>
+    </section>
+
+    <!-- 志愿者招募 -->
+    <section class="section" id="volunteer">
+        <h2>🤝 加入爪迹志愿者</h2>
+        <div class="info-box">
+            志愿者可参与：日常投喂、救助协助、拍摄记录、宣传科普、活动组织
+        </div>
+        <div class="volunteer-form">
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" placeholder="请输入姓名">
+            </div>
+            <div class="form-group">
+                <label>学院/班级</label>
+                <input type="text" placeholder="四川电力职业技术学院XX系XX班">
+            </div>
+            <div class="form-group">
+                <label>联系方式</label>
+                <input type="text" placeholder="手机号/微信">
+            </div>
+            <div class="form-group">
+                <label>志愿意向</label>
+                <input type="text" placeholder="如：救助、摄影、宣传、文案、后勤等">
+            </div>
+            <button class="btn">提交志愿者报名</button>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>爪迹——校园流浪动物关怀平台 © 2026 四川电力职业技术学院 公益项目</p>
+    <p>用微小力量，守护每一段温暖爪迹</p>
+</footer>
+
+</body>
+</html>
